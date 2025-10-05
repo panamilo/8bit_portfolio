@@ -3,51 +3,65 @@
 import Link from "next/link";
 import React, { useState } from "react";
 
-export default function Footer() {
-  const [isShowModal, setIsShowModal] = useState<boolean>(false);
+interface Project {
+  name: string;
+  description: string;
+  technologies?: string;
+  link: string;
+}
+
+interface FooterProps {
+  projects?: Project[];
+}
+
+export default function Footer({ projects = [] }: FooterProps) {
+  const [isShowModal, setIsShowModal] = useState(false);
 
   return (
-    <footer className="fixed bottom-5 left-5">
-      <button type="button" onClick={() => setIsShowModal(!isShowModal)}>
+    <footer className="fixed bottom-5 left-5 flex flex-col items-center gap-2 z-20">
+      {/* NES Balloon above the star */}
+      <div className="nes-balloon from-left w-36 text-center">
+        <p className="text-xs">Check my projects!</p>
+      </div>
+
+      {/* Star Button */}
+      <button
+        type="button"
+        className="relative"
+        onClick={() => setIsShowModal(!isShowModal)}
+      >
         <i className="nes-icon is-large star"></i>
       </button>
 
+      {/* Modal */}
       {isShowModal && (
-        <div className="fixed inset-0 bg-gray-500/50 flex justify-center items-center z-10">
-          <div className="nes-dialog w-[40rem] bg-white">
-            <div className="flex justify-end">
+        <div className="fixed inset-0 bg-gray-500/50 flex justify-center items-center z-30">
+          <div className="nes-dialog w-[40rem] max-h-[80vh] bg-white overflow-y-auto p-4">
+            <div className="flex justify-end mb-3">
               <button onClick={() => setIsShowModal(false)}>
                 <i className="nes-icon close is-small"></i>
               </button>
             </div>
             <div className="flex flex-col justify-center items-center gap-5">
-              <i className="snes-jp-logo"></i>
               <p>My Projects:</p>
 
-              <Link href={"#"}>
-                <div className="nes-container with-title is-dark">
-                  <p className="title">Textual Games</p>
-                  <p>
-                    Textual Games offers a nostalgic journey into the realm of
-                    classic MUD gaming, infused with an innovative twist of AI.
-                  </p>
-                </div>
-              </Link>
-              <Link href={"#"}>
-                <div className="nes-container with-title">
-                  <p className="title">Orcish AI Next.js Framework</p>
-                  <p>
-                    The Orcish AI Next.js Framework is a powerful tool that
-                    leverages the capabilities of OpenAI API.
-                  </p>
-                </div>
-              </Link>
-              <Link href={"#"}>
-                <div className="nes-container with-title is-dark">
-                  <p className="title">Orcish Admin</p>
-                  <p>Simple admin area built in Next.js.</p>
-                </div>
-              </Link>
+              {projects.map((project, i) => (
+                <Link key={i} href={project.link} target="_blank">
+                  <div
+                    className={`nes-container with-title ${
+                      i % 2 === 0 ? "is-dark" : ""
+                    }`}
+                  >
+                    <p className="title">{project.name}</p>
+                    <p>{project.description}</p>
+                    {project.technologies && (
+                      <p className="text-xs mt-1">
+                        <b>Technologies:</b> {project.technologies}
+                      </p>
+                    )}
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
         </div>

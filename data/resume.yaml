@@ -1,0 +1,109 @@
+name: Panagiotis Milopoulos
+title: Software Engineer
+email: milopoulospan@gmail.com
+linkedin: /panagiotis-milopoulos-7b0387232
+github: panamilo
+location: Πάτρα, Ελλάδα
+birthdate: 16/10/1998
+gender: Male
+nationality: Greek
+military_service: Completed (2020)
+driver_license: A1, B
+languages:
+  - English (B2)
+
+skills:
+  technical:
+    - Javascript
+    - React
+    - Node.js
+    - Typescript
+    - Next.js
+    - C#
+    - C/C++
+    - Java
+    - Grails
+    - SQL
+    - HTML/CSS
+  soft:
+    - Problem Solving
+    - Team Communication
+    - Efficiency under pressure
+
+experience:
+  - title: Software Engineer
+    company: Knowledge S.A.
+    period: April 2022 – Present
+    description:
+      - Collaborated with team members to conceptualize, design, and implement solutions, ensuring alignment with project objectives and industry standards.
+      - Actively participated in the development lifecycle, from requirements gathering and analysis to testing and deployment, demonstrating proficiency in agile methodologies.
+      - Contributed to a dynamic and collaborative work environment by effectively communicating ideas, sharing insights, and offering constructive feedback.
+  - title: Intern Software Engineer
+    company: Knowledge S.A.
+    period: October 2021 – April 2022
+    description:
+      - Leveraged PostgreSQL, Grails, and React frameworks to develop high-quality projects aimed at practical application and skill enhancement.
+      - Engaged in continuous learning and professional development initiatives to enhance technical proficiency and stay abreast of emerging technologies and best practices.
+
+education:
+  - degree: MSc in Human–Computer Interaction
+    institution: University of Patras
+    period: 2025 – Present
+  - degree: BSc in Computer Informatics and Engineering
+    institution: University of Peloponnese
+    period: 2016 – 2024
+    grade: 7.55/10
+    thesis: "Design and Implementation of a training game on the use of Brain Computer Interfaces"
+    thesis_grade: 10/10
+  - degree: Secondary Education
+    institution: 12o Public High School of Patras
+    period: 2013 – 2016
+    grade: 18.1/20
+
+workshops_and_courses:
+  - role: Participant
+    organisation: InterMediaKT
+    event: Patras CodeCamp 2020
+    workshop: 2D Game Design & Development
+    year: 2020
+  - role: Erasmus Summer School Graduate
+    organisation: Thomas Bata University
+    course: Cybernetics and Informatics - 21st Century Sciences
+    ects: 3
+    year: Summer 2024
+  - role: Graduate
+    organisation: XAMK Open University of Finland
+    course: Introduction to Video Games Creation
+    ects: 10
+    period: 2023 – 2024
+  - role: Volunteer
+    organisation: Patras IQ
+    event: 6η Έκθεση Καινοτομίας και Μεταφοράς Τεχνογνωσίας
+    year: 2019
+
+interests:
+  - Fitness enthusiast (weights and boxing)
+  - Video gaming and technology
+  - Volunteer work and social participation
+
+projects:
+  - name: 8bit Portfolio
+    description: Personal portfolio website showcasing projects and skills with a Retro look.
+    technologies: Next.js, React, TypeScript
+    link: https://8bit-portfolio.vercel.app/
+  - name: BCI Pong
+    description: A Pong game controlled using Brain-Computer Interface (BCI) technology.
+    technologies: Python, BCI, Unity, C#
+    link: https://github.com/panamilo/BCI-Pong
+  - name: Will_it_Run
+    description: A web daily challenge game that tests your coding skills.
+    technologies: React, Node.js, Express, TypeScript
+    link: https://github.com/panamilo/Will_it_Run
+  - name: The Return
+    description: The Return, a text-based roleplaying introductory game that was made using Unity.
+    technologies: Unity, C#
+    link: https://github.com/panamilo/The_Return
+  - name: ejam_superheroes
+    description: A small full-stack project about making your own superhero!
+    technologies: React, Node.js, Express
+    link: https://github.com/panamilo/ejam_superheroes
