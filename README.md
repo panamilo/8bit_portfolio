@@ -2,21 +2,51 @@
   <img src="https://github.com/TheOrcDev/8bit-portfolio/assets/7549148/349c8acd-4b21-4996-b631-5227b2eb3fc3" alt="pixel-orc"/>
 </div>
 
-## Overview
-Welcome to the 8-bit Pixely Portfolio Orcish Template! This unique developer portfolio is crafted in Next.js and styled using the nes.css library to bring a nostalgic, old-school NES look. Perfect for developers who want to showcase their projects with a retro gaming aesthetic, this template combines modern web development with a delightful 8-bit design.
+🎮 8-bit Pixely Portfolio – Custom Orcish Edition
 
-## 8-bit Pixely Portfolio Orcish Template
+A personalized developer portfolio featuring a nostalgic 8-bit retro gaming aesthetic.
+This project is based on the original open-source template 8-bit Pixely Portfolio Orcish Template by TheOrcDev, and has been significantly modified and expanded with new UI, layout, and data-handling features.
 
-First, run the development server:
+ 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+⚙️ Technologies
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Next.js
+
+nes.css for the classic NES-inspired design
+
+Dynamic data loading from YAML files (replacing static content)
+
+Custom UI components and responsive layout adjustments
+
+🚀 Getting Started
+- npm install
+- npm run dev
+OR
+  yarn dev
+
+
+Then open http://localhost:3000 to see it live.
+
+
+
+
+🧩 Major Changes from the Original Template
+
+- Redesigned UI and layout
+
+- Migrated from static content to dynamic YAML-based data
+
+- Improved structure and organization of components
+
+- Enhanced responsiveness and accessibility
+
+- Optimized build and rendering performance
+
+
+
+
+🙌 Credits & Acknowledgements
+
+This project is based on and inspired by the original work of TheOrcDev, creator of the 8-bit Pixely Portfolio Orcish Template.
+The current version represents a customized and extended adaptation, developed with respect to and full credit for the original source.
