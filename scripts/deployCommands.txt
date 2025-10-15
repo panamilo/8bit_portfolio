@@ -1,0 +1,8 @@
+if (Test-Path .next) { Remove-Item -Recurse -Force .next }
+if (Test-Path out)    { Remove-Item -Recurse -Force out }
+
+npm run build
+
+New-Item -Path .\out\.nojekyll -ItemType File -Force
+
+npx gh-pages -d out -b gh-pages -r https://github.com/panamilo/8bit_portfolio.git --dotfiles

@@ -18,7 +18,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: url("/grass.jpeg") repeat,
+  background: url("/8bit_portfolio/grass.jpeg") repeat,
     linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
       rgb(var(--background-start-rgb));
 }

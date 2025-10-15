@@ -32,6 +32,20 @@ interface ResumeData {
   projects: { name: string; description: string; technologies?: string; link: string }[];
 }
 
+const skillColors: { [key: string]: string } = {
+  "Javascript": "is-warning",
+  "React": "is-primary", 
+  "Node.js": "is-success",
+  "Typescript": "is-primary",
+  "Next.js": "is-dark",
+  "C#": "is-error", 
+  "C/C++": "is-dark",
+  "Java": "is-error",
+  "Grails": "is-success", 
+  "SQL": "is-primary",
+  "HTML/CSS": "is-warning",
+};
+
 export default function Home() {
   const data: ResumeData =loadResumeData();
 
@@ -79,17 +93,20 @@ export default function Home() {
           <Image
             width={100}
             height={100}
-            src={"/axe-and-shield.webp"}
+            src={"/8bit_portfolio/axe-and-shield.webp"}
             alt="Axe & Shield"
           />
           <p className="text-center mb-2">These are my skills</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
-            {data.skills.technical.map((skill) => (
-              <Link key={skill} href="#" className="nes-badge">
-                <span className="is-primary">{skill}</span>
-              </Link>
-            ))}
+            {data.skills.technical.map((skill) => {
+              const colorClass = skillColors[skill] || "is-primary";
+              return (
+                <Link key={skill} href="#" className="nes-badge">
+                  <span className={colorClass}>{skill}</span>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>

@@ -90,7 +90,7 @@ projects:
   - name: 8bit Portfolio
     description: Personal portfolio website showcasing projects and skills with a Retro look.
     technologies: Next.js, React, TypeScript
-    link: https://8bit-portfolio.vercel.app/
+    link: https://panamilo.github.io/8bit_portfolio
   - name: BCI Pong
     description: A Pong game controlled using Brain-Computer Interface (BCI) technology.
     technologies: Python, BCI, Unity, C#
