@@ -30,8 +30,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-latex-extra
 
-      - name: Build PDF
-        run: pandoc resume.md -o docs/resume.pdf --pdf-engine=xelatex -V mainfont="DejaVu Sans"
+      - name: Build PDF 
+        run: |
+          mkdir -p docs
+          pandoc resume.md -o docs/resume.pdf --pdf-engine=xelatex -V mainfont="DejaVu Sans"
 
       - name: Move PDF to /resumepdf
         run: |
