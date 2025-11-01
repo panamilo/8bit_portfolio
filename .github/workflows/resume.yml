@@ -23,7 +23,8 @@ jobs:
 
       - name: Generate Markdown from YAML
         run: node scripts/generate_resume.js
-
+      - name: Install pandoc
+        run: sudo apt-get install -y pandoc
       - name: Install LaTeX
         run: |
           sudo apt-get update
