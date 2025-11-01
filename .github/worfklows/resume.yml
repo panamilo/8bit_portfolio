@@ -35,6 +35,11 @@ jobs:
       - name: Build PDF
         run: pandoc resume.md -o docs/resume.pdf --pdf-engine=xelatex -V mainfont="DejaVu Sans"
 
+      - name: Move PDF to /resumepdf
+        run: |
+          mkdir -p docs/resumepdf
+          mv docs/resume.pdf docs/resumepdf/resume.pdf
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
