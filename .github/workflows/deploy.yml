@@ -6,9 +6,9 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
 
+  deploy-site:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -28,12 +28,38 @@ jobs:
 
       - name: Build static site
         run: npm run build
-        # "output: export" in next.config.js automatically generates /out
+
+      - name: Disable Jekyll
+        run: touch out/.nojekyll
+
+      - name: Deploy to GitHub Pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          npx gh-pages -d out -b gh-pages --repo https://x-access-token:${GITHUB_TOKEN}@github.com/panamilo/8bit_portfolio.git --dotfiles
+
+  build-pdf:
+    runs-on: ubuntu-latest
+    needs: deploy-site
+    if: contains(github.event.head_commit.message, 'resume') || github.event_name == 'push' && contains(join(github.event.commits.*.modified, ','), 'data/resume.yaml')
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
 
       - name: Generate Markdown from YAML
         run: node scripts/generate_resume.js
 
-      - name: Install Pandoc and LaTeX
+      - name: Install Pandoc + LaTeX
         run: |
           sudo apt-get update
           sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-latex-extra
@@ -43,10 +69,7 @@ jobs:
           mkdir -p out/resumepdf
           pandoc resume.md -o out/resumepdf/resume.pdf --pdf-engine=xelatex -V mainfont="DejaVu Sans"
 
-      - name: Disable Jekyll
-        run: touch out/.nojekyll
-
-      - name: Deploy to GitHub Pages
+      - name: Deploy updated PDF
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
