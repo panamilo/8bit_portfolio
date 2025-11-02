@@ -27,7 +27,8 @@ jobs:
           rm -rf out
 
       - name: Build static site
-        run: npm run build   # static "out" folder is created automatically in Next.js 15
+        run: npm run build
+        # "output: export" in next.config.js automatically generates /out
 
       - name: Generate Markdown from YAML
         run: node scripts/generate_resume.js
@@ -46,5 +47,9 @@ jobs:
         run: touch out/.nojekyll
 
       - name: Deploy to GitHub Pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npx gh-pages -d out -b gh-pages -r https://github.com/panamilo/8bit_portfolio.git --dotfiles
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          npx gh-pages -d out -b gh-pages --repo https://x-access-token:${GITHUB_TOKEN}@github.com/panamilo/8bit_portfolio.git --dotfiles
