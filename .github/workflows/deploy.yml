@@ -1,0 +1,62 @@
+name: Build and Deploy Site + Resume PDF
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout repo
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2️⃣ Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      # 3️⃣ Clean old builds
+      - name: Clean old builds
+        run: |
+          if (Test-Path .next) { Remove-Item -Recurse -Force .next }
+          if (Test-Path out) { Remove-Item -Recurse -Force out }
+
+      # 4️⃣ Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # 5️⃣ Build Next.js static export
+      - name: Build and export Next.js site
+        run: |
+          npm run build
+          npm run export
+
+      # 6️⃣ Generate Markdown from YAML
+      - name: Generate Markdown from YAML
+        run: node scripts/generate_resume.js
+
+      # 7️⃣ Install Pandoc and LaTeX
+      - name: Install Pandoc and LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-latex-extra
+
+      # 8️⃣ Build PDF into the out folder
+      - name: Build PDF
+        run: |
+          mkdir -p out/resumepdf
+          pandoc resume.md -o out/resumepdf/resume.pdf --pdf-engine=xelatex -V mainfont="DejaVu Sans"
+
+      # 9️⃣ Ensure .nojekyll so GitHub Pages serves files correctly
+      - name: Add .nojekyll
+        run: New-Item -Path out/.nojekyll -ItemType File -Force
+
+      # 🔟 Deploy site and PDF
+      - name: Deploy to GitHub Pages
+        run: |
+          npx gh-pages -d out -b gh-pages -r https://github.com/panamilo/8bit_portfolio.git --dotfiles
