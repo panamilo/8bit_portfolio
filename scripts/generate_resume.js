@@ -51,7 +51,7 @@ const projectsText = (data.projects || [])
 
 // Workshops & Courses
 const workshopsText = (data.workshops_and_courses || [])
-  .map(w => `- **${w.course || w.workshop}**, ${w.organisation} (${w.year || w.period}) — ${w.role}`)
+  .map(w => `- **${w.course || w.workshop || w.event}**, ${w.organisation} (${w.year || w.period}) — ${w.role}`)
   .join('\n');
 
 // Interests
